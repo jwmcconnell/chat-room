@@ -2,10 +2,17 @@ import Component from '../Component.js';
 
 class Profile extends Component {
   renderTemplate() {
+    const user = this.props.user;
+
+    if(!user) {
+      return '<div></div>';
+    }
+
+    const avatar = user.photoURL || '../../assets/profile.png';
     return /*html*/`
       <div class="profile">
-        <img src="https://cdn10.bigcommerce.com/s-npe4l/products/1157/images/1335/B-MZ-SMSHD---HIGH__85441.1477602947.1280.1280.jpg?c=2" alt="Profile avatar">
-        <span>Jack McConnell</span>
+        <img src="${avatar}" alt="Profile avatar">
+        <span>${user.displayName}</span>
         <button>Sign Out</button>
       </div>
     `;
