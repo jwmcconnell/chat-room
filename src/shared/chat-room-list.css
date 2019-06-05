@@ -9,6 +9,15 @@ ul {
 ul li {
   padding: 10px;
   text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  height: 100%;
+}
+
+ul a {
+  text-decoration: none;
+  color: black;
 }
 
 .item-wrapper {
@@ -16,6 +25,7 @@ ul li {
   margin: 0 5px 5px 0;
   border: 1px solid black;
   width: 250px;
+  height: 250px;
   background-color: lightsteelblue;
 }
 

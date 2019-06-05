@@ -28,6 +28,7 @@ class ChatRoomItem extends Component {
       <a href="./chat.html?key=${room.key}">
         <li>
           <h2>${room.name}</h2>
+          <p>${room.description ? room.description : ''}</p>
         </li>
       </a>
       <button class="remove-item">X</button>

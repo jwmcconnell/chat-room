@@ -5,16 +5,18 @@ class AddChatRoom extends Component {
   render() {
     const dom = this.renderDOM();
 
-    const input = dom.querySelector('.chat-room-name');
+    const roomName = dom.querySelector('.chat-room-name');
+    const roomDescription = dom.querySelector('.chat-room-description');
 
     dom.addEventListener('submit', event => {
       event.preventDefault();
-      if(input.value.trim()) {
+      if(roomName.value.trim() && roomDescription.value.trim()) {
         const roomRef = roomsRef.push();
         roomRef.set({
           key: roomRef.key,
           owner: auth.currentUser.uid,
-          name: input.value,
+          name: roomName.value,
+          description: roomDescription.value
         })
           .then(() => {
             dom.reset();
@@ -33,7 +35,7 @@ class AddChatRoom extends Component {
           <input class="chat-room-name">
         </label>
         <label>Description:
-          <input class="chat-room-description">
+          <textarea class="chat-room-description"></textarea>
         </label>
         <button>Submit</button>
       </form>
