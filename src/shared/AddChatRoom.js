@@ -14,7 +14,10 @@ class AddChatRoom extends Component {
         key: roomRef.key,
         owner: auth.currentUser.uid,
         name: input.value,
-      });
+      })
+        .then(() => {
+          dom.reset();
+        });
     });
 
     return dom;
