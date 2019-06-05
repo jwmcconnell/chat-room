@@ -20,6 +20,10 @@ ul a {
   color: black;
 }
 
+ul p {
+  overflow: hidden;
+}
+
 .item-wrapper {
   position: relative;
   margin: 0 5px 5px 0;
