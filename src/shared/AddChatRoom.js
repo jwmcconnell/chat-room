@@ -11,7 +11,7 @@ class AddChatRoom extends Component {
       event.preventDefault();
       if(input.value.trim()) {
         const roomRef = roomsRef.push();
-        roomsRef.child(roomRef.key).set({
+        roomRef.set({
           key: roomRef.key,
           owner: auth.currentUser.uid,
           name: input.value,
