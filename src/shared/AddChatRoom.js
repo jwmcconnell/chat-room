@@ -25,8 +25,10 @@ class AddChatRoom extends Component {
 
   renderTemplate() {
     return /*html*/`
-      <form>
-        <input class="chat-room-name">
+      <form class="add-room">
+        <label>Create a Chat Room:
+          <input class="chat-room-name">
+        </label>
         <button>Submit</button>
       </form>
     `;

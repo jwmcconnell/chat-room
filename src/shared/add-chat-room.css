@@ -1,0 +1,19 @@
+.add-room {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.add-room label {
+  margin: 10px;
+  font-size: 1.2em;
+}
+
+.add-room label input {
+  font-size: .8em;
+}
+
+.add-room button {
+  height: 2em;
+  width: 10em;
+}
