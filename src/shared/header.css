@@ -5,6 +5,7 @@ header {
   background: black;
   color: white;
   margin: 0;
+  height: 10vh;
 }
 
 header h1 {
