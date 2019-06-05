@@ -9,15 +9,17 @@ class AddChatRoom extends Component {
 
     dom.addEventListener('submit', event => {
       event.preventDefault();
-      const roomRef = roomsRef.push();
-      roomsRef.child(roomRef.key).set({
-        key: roomRef.key,
-        owner: auth.currentUser.uid,
-        name: input.value,
-      })
-        .then(() => {
-          dom.reset();
-        });
+      if(input.value.trim()) {
+        const roomRef = roomsRef.push();
+        roomsRef.child(roomRef.key).set({
+          key: roomRef.key,
+          owner: auth.currentUser.uid,
+          name: input.value,
+        })
+          .then(() => {
+            dom.reset();
+          });
+      }
     });
 
     return dom;
