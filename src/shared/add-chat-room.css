@@ -5,7 +5,7 @@
 }
 
 .add-room label {
-  margin: 10px;
+  margin-top: 10px;
   font-size: 1.2em;
 }
 
@@ -16,4 +16,9 @@
 .add-room button {
   height: 2em;
   width: 10em;
+  margin: 10px;
+}
+
+.add-room h2 {
+  margin: 10px 0 0 0;
 }
