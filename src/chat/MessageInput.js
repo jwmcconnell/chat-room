@@ -22,7 +22,8 @@ class Header extends Component {
       const messageRef = messagesRef.push();
       messageRef.set({
         message: messageInput.value,
-        owner: auth.currentUser.uid
+        owner: auth.currentUser.uid,
+        displayName: auth.currentUser.displayName
       }).then(() => {
         dom.reset();
       });
