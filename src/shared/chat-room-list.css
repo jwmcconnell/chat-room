@@ -7,7 +7,6 @@ ul {
 }
 
 ul li {
-  border: 1px solid black;
   padding: 10px;
   text-align: center;
 }
@@ -15,7 +14,9 @@ ul li {
 .item-wrapper {
   position: relative;
   margin: 0 5px 5px 0;
+  border: 1px solid black;
   width: 250px;
+  background-color: lightsteelblue;
 }
 
 .item-wrapper .remove-item {
