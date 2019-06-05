@@ -1,6 +1,6 @@
 import Component from '../Component.js';
 
-class Header extends Component {
+class ChatRoomList extends Component {
   renderTemplate() {
     return /*html*/`
       <ul>
@@ -30,4 +30,4 @@ class Header extends Component {
   }
 }
 
-export default Header;
+export default ChatRoomList;
