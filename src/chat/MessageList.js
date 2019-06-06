@@ -17,6 +17,10 @@ class MessageList extends Component {
       dom.appendChild(messageItem.render());
     });
 
+    setTimeout(() => {
+      dom.scrollTop = dom.scrollHeight;
+    });
+
     return dom;
   }
 
