@@ -4,7 +4,7 @@ import MessageInput from './MessageInput.js';
 import MessageList from './MessageList.js';
 
 import QUERY from '../utils/QUERY.js';
-import { roomsRef, usersRef, messagesByRoomRef, usersByRoomRef } from '../services/firebase.js';
+import { roomsRef, messagesByRoomRef } from '../services/firebase.js';
 
 class ChatApp extends Component {
 
@@ -14,7 +14,6 @@ class ChatApp extends Component {
     const searchParams = QUERY.parse(window.location.search.slice(1));
 
     const roomMessagesRef = messagesByRoomRef.child(searchParams.key);
-    const roomUsersRef = usersByRoomRef.child(searchParams.key);
     const roomRef = roomsRef.child(searchParams.key);
 
     const header = new Header({ title: 'Chat Room:' });
@@ -28,24 +27,6 @@ class ChatApp extends Component {
 
       const messages = value ? Object.values(value) : [];
       messageList.update({ messages });
-
-      // let activeUsers = value.activeUsers ? Object.values(value.activeUsers) : [];
-
-      // updateUsers(activeUsers)
-      //   .then((response) => {
-
-      //   });
-    });
-
-    roomUsersRef.on('value', snapshot => {
-      const value = snapshot.val();
-
-      let activeUsers = value ? Object.values(value) : [];
-
-      updateUsers(activeUsers)
-        .then((users) => {
-          messageList.update({ users });
-        });
     });
 
     roomRef.on('value', snapshot => {
@@ -73,16 +54,3 @@ class ChatApp extends Component {
 }
 
 export default ChatApp;
-
-function updateUsers(activeUsers) {
-  const promises = activeUsers.map(activeUser => {
-    return new Promise((resolve) => {
-      const userRef = usersRef.child(activeUser.uid);
-      userRef.on('value', snapshot => {
-        const value = snapshot.val();
-        resolve(value);
-      });
-    });
-  });
-  return Promise.all(promises);
-}

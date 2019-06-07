@@ -1,19 +1,34 @@
 import Component from '../Component.js';
+import MessageOwner from './MessageOwner.js';
+import { usersRef } from '../services/firebase.js';
 
 class MessageList extends Component {
 
+  render() {
+    const dom = this.renderDOM();
+
+    const owner = this.props.message.owner;
+
+    const userRef = usersRef.child(owner);
+
+    if(!owner) {
+      return '<div></div>';
+    }
+
+    userRef.on('value', snapshot => {
+      const value = snapshot.val();
+      const messageOwner = new MessageOwner({ owner: value });
+      dom.prepend(messageOwner.render());
+    });
+
+    return dom;
+  }
+
   renderTemplate() {
     const message = this.props.message;
-    const owner = message.owner;
-
-    const avatar = owner.photoURL ? owner.photoURL : './assets/profile.png';
 
     return /*html*/`
       <li class="message">
-        <section class="user">
-          <img src="${avatar}" class="message-avatar">
-          <span>${owner.displayName}:</span>
-        </section>
         <span>${message.message}</span>
       </li>
     `;
