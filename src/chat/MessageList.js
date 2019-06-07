@@ -7,12 +7,20 @@ class MessageList extends Component {
     const dom = this.renderDOM();
 
     const messages = this.props.messages;
+    const users = this.props.users;
 
-    if(!messages) {
+    if(!messages || !users) {
       return dom;
     }
 
     messages.forEach(message => {
+
+      users.forEach(user => {
+        if(message.owner === user.uid) {
+          message.owner = user;
+        }
+      });
+
       const messageItem = new MessageItem({ message });
       dom.appendChild(messageItem.render());
     });

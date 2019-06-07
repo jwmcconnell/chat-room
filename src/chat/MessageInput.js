@@ -1,19 +1,15 @@
 import Component from '../Component.js';
-import { auth } from '../services/firebase.js';
+import { auth, messagesByRoomRef, usersByRoomRef } from '../services/firebase.js';
 
 class Header extends Component {
 
   render() {
     const dom = this.renderDOM();
 
-    const room = this.props.room;
-    const roomRef = this.props.roomRef;
+    const key = this.props.key;
 
-    if(!room) {
-      return dom;
-    }
-
-    const messagesRef = roomRef.child('messages');
+    const messagesRef = messagesByRoomRef.child(key);
+    const roomUsersRef = usersByRoomRef.child(key);
 
     const messageInput = dom.querySelector('.message-input');
 
@@ -22,11 +18,16 @@ class Header extends Component {
       const messageRef = messagesRef.push();
       messageRef.set({
         message: messageInput.value,
-        owner: auth.currentUser.uid,
-        displayName: auth.currentUser.displayName
+        owner: auth.currentUser.uid
       }).then(() => {
         dom.reset();
       });
+
+      roomUsersRef
+        .child(auth.currentUser.uid)
+        .set({
+          uid: auth.currentUser.uid
+        });
     });
 
     return dom;

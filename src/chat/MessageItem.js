@@ -6,7 +6,7 @@ class MessageList extends Component {
     const message = this.props.message;
     return /*html*/`
       <li>
-        <span>${message.displayName}:</span>
+        <span>${message.owner.displayName}:</span>
         <span>${message.message}</span>
       </li>
     `;
