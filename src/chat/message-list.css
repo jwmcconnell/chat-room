@@ -11,6 +11,8 @@
 
 .message {
   padding: 3px;
+  display: flex;
+  flex-direction: column;
 }
 
 .message .message-avatar {
@@ -22,4 +24,9 @@
 .message .user {
   display: flex;
   align-items: center;
+}
+
+.message .message-date {
+  font-size: .9em;
+  color: grey;
 }

@@ -18,7 +18,8 @@ class Header extends Component {
       const messageRef = messagesRef.push();
       messageRef.set({
         message: messageInput.value,
-        owner: auth.currentUser.uid
+        owner: auth.currentUser.uid,
+        date: new Date().toISOString()
       }).then(() => {
         dom.reset();
       });

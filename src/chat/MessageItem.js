@@ -27,9 +27,15 @@ class MessageList extends Component {
   renderTemplate() {
     const message = this.props.message;
 
+    if(!message.date) {
+      return '<div></div>';
+    }
+    const date = new Date(message.date);
+
     return /*html*/`
       <li class="message">
-        <span>${message.message}</span>
+      <span>${message.message}</span>
+      <span class="message-date">${date.toLocaleDateString()} ${date.toLocaleTimeString()}</span>
       </li>
     `;
   }
