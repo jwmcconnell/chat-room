@@ -8,3 +8,18 @@
   height: 85vh;
   overflow: auto;
 }
+
+.message {
+  padding: 3px;
+}
+
+.message .message-avatar {
+  border-radius: 100%;
+  width: 25px;
+  padding: 3px;
+}
+
+.message .user {
+  display: flex;
+  align-items: center;
+}

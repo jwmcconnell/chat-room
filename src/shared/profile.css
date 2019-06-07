@@ -5,8 +5,9 @@
 }
 
 .profile img {
-  width: 20px;
+  width: 25px;
   padding: 0 5px;
+  border-radius: 100%;
 }
 
 .profile button {
