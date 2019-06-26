@@ -1,3 +1,14 @@
+.profile {
+  margin: 10px;
+  display: flex;
+  align-items: center;
+}
+
 .profile img {
   width: 20px;
+  padding: 0 5px;
+}
+
+.profile button {
+  margin: 0 5px;
 }
